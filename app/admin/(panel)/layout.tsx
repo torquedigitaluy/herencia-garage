@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { Inbox, Images, ExternalLink, Wrench } from "lucide-react";
+import { Inbox, Images, Car, ExternalLink, Wrench } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { LogoutButton } from "@/components/admin/LogoutButton";
 
@@ -47,6 +47,12 @@ export default async function AdminLayout({ children }: { children: React.ReactN
               className="flex items-center gap-1.5 text-metal transition-colors hover:text-crema"
             >
               <Inbox className="h-4 w-4" /> Cotizaciones
+            </Link>
+            <Link
+              href="/admin/proyectos"
+              className="flex items-center gap-1.5 text-metal transition-colors hover:text-crema"
+            >
+              <Car className="h-4 w-4" /> Proyectos
             </Link>
             <Link
               href="/admin/portfolio"

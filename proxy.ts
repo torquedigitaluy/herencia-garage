@@ -2,8 +2,8 @@ import { NextResponse, type NextRequest } from "next/server";
 import { createServerClient } from "@supabase/ssr";
 
 /**
- * Protege las rutas /admin: refresca la sesión de Supabase en cada request
- * y redirige al login a quien no esté autenticado.
+ * Protege las rutas /admin y /cliente: refresca la sesión de Supabase en cada
+ * request y redirige al login correspondiente a quien no esté autenticado.
  * (En Next 16 este archivo reemplaza a middleware.ts.)
  */
 export async function proxy(request: NextRequest) {
@@ -33,17 +33,19 @@ export async function proxy(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser();
 
-  const esLogin = request.nextUrl.pathname === "/admin/login";
+  const path = request.nextUrl.pathname;
+  const esPortalCliente = path.startsWith("/cliente");
+  const esLogin = path === "/admin/login" || path === "/cliente/login";
 
   if (!user && !esLogin) {
     const url = request.nextUrl.clone();
-    url.pathname = "/admin/login";
+    url.pathname = esPortalCliente ? "/cliente/login" : "/admin/login";
     return NextResponse.redirect(url);
   }
 
   if (user && esLogin) {
     const url = request.nextUrl.clone();
-    url.pathname = "/admin";
+    url.pathname = esPortalCliente ? "/cliente/dashboard" : "/admin";
     return NextResponse.redirect(url);
   }
 
@@ -51,5 +53,5 @@ export async function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/admin/:path*"],
+  matcher: ["/admin/:path*", "/cliente/:path*"],
 };

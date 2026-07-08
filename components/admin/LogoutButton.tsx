@@ -4,12 +4,12 @@ import { useRouter } from "next/navigation";
 import { LogOut } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 
-export function LogoutButton() {
+export function LogoutButton({ redirectTo = "/admin/login" }: { redirectTo?: string }) {
   const router = useRouter();
 
   async function handleLogout() {
     await createClient().auth.signOut();
-    router.push("/admin/login");
+    router.push(redirectTo);
     router.refresh();
   }
 

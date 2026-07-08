@@ -9,7 +9,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 Desarrollo inicial de "Herencia Garage", una plataforma web para un taller especializado en restauración de autos clásicos (exclusivamente chapa y pintura).
 El proyecto usa Next.js (App Router) y Supabase, dividiendo el trabajo en un sitio público y un panel de administración (`/admin`).
 
-**Etapas 1 a 4 COMPLETAS.** Stack ya instalado:
+**Las 5 etapas del roadmap inicial están COMPLETAS.** Stack:
 - **Next.js 16** (App Router, Turbopack) · **React 19** · **TypeScript**.
 - **Tailwind CSS v4** — sin `tailwind.config.ts`; los tokens de diseño viven en `@theme` dentro de `app/globals.css`.
 - `gsap` (con `ScrollTrigger`), `lucide-react`, `@supabase/supabase-js`, `@supabase/ssr` instalados.
@@ -21,7 +21,9 @@ El proyecto usa Next.js (App Router) y Supabase, dividiendo el trabajo en un sit
 - **Etapa 3:** cotización funcional — `components/forms/CotizacionForm.tsx` (client): formulario multi-paso (vehículo → fotos → contacto) que sube hasta 5 fotos (10 MB c/u) a `media/cotizaciones/<leadId>/` e inserta en `leads_cotizacion` con el cliente browser de `lib/supabase/client.ts`. Checkbox "solo chapa y pintura" obligatorio (validado también por RLS). Tabla `leads_cotizacion` y bucket privado `media` creados vía migración; RLS: anon solo INSERT (leads con `estado='nuevo'` y checkbox aceptado; uploads solo bajo `cotizaciones/`), sin SELECT anónimo.
 - **Etapa 4:** panel `/admin` — `proxy.ts` (en Next 16 reemplaza a `middleware.ts`) protege `/admin` y refresca la sesión. Login en `app/admin/login/`; el resto del panel vive en el route group `app/admin/(panel)/` cuyo layout exige rol `admin` (tabla `profiles`, creada por trigger `on_auth_user_created` con rol `cliente`; helper `is_admin()` security definer). Vistas: lista de leads, detalle con fotos vía URLs firmadas y cambio de estado, CRUD de portfolio (`portfolio_publico` + bucket **público** `portfolio`, separado del privado `media`). La sección Portfolio de la landing lee de la DB con `lib/supabase/public.ts` (cliente anon sin cookies para no volver dinámica la Home; ISR `revalidate = 60`) y cae a placeholders si está vacía.
 
-Falta el portal del cliente (Etapa 5).
+- **Etapa 5:** portal del cliente — `app/cliente/login/` + route group `app/cliente/(portal)/` con `dashboard/` (timeline de 5 fases de `lib/fases.ts`, barra de avance y bitácora con URLs firmadas). Tablas `proyectos_activos` y `bitacora_fotos`; fotos de bitácora en `media/proyectos/<proyectoId>/`. RLS verificado: cada cliente ve solo su proyecto/bitácora/fotos. En el admin: `/admin/proyectos` (crear proyecto, crear cuenta de cliente vía server action con `lib/supabase/admin.ts` — service role, SOLO servidor, verifica rol admin antes) y detalle con fase/avance + subida de bitácora. `proxy.ts` cubre `/admin/:path*` y `/cliente/:path*`.
+
+Roadmap inicial completo. Próximos pasos posibles: contenido real (textos/fotos), deploy (Vercel), secuencia de scroll optimizada para móvil, página de restablecer contraseña.
 
 > **Nota Tailwind v4:** para agregar colores/fuentes se editan las variables `--color-*` / `--font-*` en el bloque `@theme` de `globals.css`, NO un archivo de config JS.
 
@@ -45,7 +47,7 @@ Falta el portal del cliente (Etapa 5).
 2. ✅ **Animación de scroll "El Viaje del Metal"** — `<CanvasScroll>` con GSAP `ScrollTrigger`, pinning a 100vh, secuencia de 121 frames WebP.
 3. ✅ **Backend Supabase + cotización** — formulario multi-paso que inserta en `leads_cotizacion` y sube fotos al bucket `media` (privado).
 4. ✅ **Panel `/admin` (CMS)** — Auth con `@supabase/ssr`, rutas protegidas por `proxy.ts`, revisión de leads y CRUD de portfolio.
-5. **Portal del cliente** — `/cliente/dashboard` con seguimiento en vivo, protegido por RLS (cada cliente ve solo su auto).
+5. ✅ **Portal del cliente** — `/cliente/dashboard` con seguimiento en vivo, protegido por RLS (cada cliente ve solo su auto).
 
 ## Assets de la animación de scroll (ya existen)
 
