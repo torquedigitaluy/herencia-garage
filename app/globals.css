@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+/*
+  Herencia Garage — sistema de diseño
+  Estética: premium, vintage e industrial. Fondo negro estudio que resalta metal y pintura.
+*/
+@theme {
+  /* Paleta */
+  --color-negro: #0f0f0f; /* Fondo principal — negro mate estudio */
+  --color-carbon: #1a1a1a; /* Superficies elevadas (cards, secciones) */
+  --color-metal: #8e9196; /* Gris industrial — bordes, divisores, texto secundario */
+  --color-metal-oscuro: #3a3d40; /* Bordes sutiles sobre negro */
+  --color-rojo: #9b111e; /* Rojo automotriz (Candy Apple Red) — acento / CTA */
+  --color-rojo-claro: #c21a2b; /* Hover del acento */
+  --color-azul: #1c39bb; /* Azul vintage — acento alternativo reservado */
+  --color-crema: #f4f1ea; /* Off-white — texto principal sobre fondos oscuros */
+
+  /* Tipografía */
+  --font-display: var(--font-oswald); /* Títulos: sans condensada, mecánica */
+  --font-body: var(--font-inter); /* Cuerpo: limpia y legible */
+}
+
+/* Base */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-negro);
+  color: var(--color-crema);
+  font-family: var(--font-body), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-rojo);
+  color: var(--color-crema);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
