@@ -1,3 +1,6 @@
+// La Home es estática pero se regenera cada 60 s para reflejar cambios del portfolio.
+export const revalidate = 60;
+
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Hero } from "@/components/sections/Hero";
