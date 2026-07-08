@@ -9,16 +9,18 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 Desarrollo inicial de "Herencia Garage", una plataforma web para un taller especializado en restauración de autos clásicos (exclusivamente chapa y pintura).
 El proyecto usa Next.js (App Router) y Supabase, dividiendo el trabajo en un sitio público y un panel de administración (`/admin`).
 
-**Etapas 1 y 2 COMPLETAS.** Stack ya instalado:
+**Etapas 1, 2 y 3 COMPLETAS.** Stack ya instalado:
 - **Next.js 16** (App Router, Turbopack) · **React 19** · **TypeScript**.
 - **Tailwind CSS v4** — sin `tailwind.config.ts`; los tokens de diseño viven en `@theme` dentro de `app/globals.css`.
-- `gsap` (con `ScrollTrigger`), `lucide-react`, `@supabase/supabase-js`, `@supabase/ssr` instalados. Supabase aún sin usar.
+- `gsap` (con `ScrollTrigger`), `lucide-react`, `@supabase/supabase-js`, `@supabase/ssr` instalados.
+- **Supabase conectado** (proyecto `cgqjdfpvpqgsgduroiyc`, credenciales en `.env.local`, MCP `supabase` configurado en `.mcp.json`).
 - `PLAN.md` — roadmap de 5 etapas con criterios de aceptación. **Léelo antes de seguir**; define el orden de trabajo.
 
 - **Etapa 1:** Home estática (`app/page.tsx`) que compone secciones en `components/sections/` + `components/layout/`, con textos Lorem Ipsum y placeholders (`components/ui/Placeholder.tsx`). Navbar con menú hamburguesa móvil.
 - **Etapa 2:** animación de scroll "El Viaje del Metal" — `components/scroll/CanvasScroll.tsx` (client): precarga 121 frames WebP, los dibuja en `<canvas>` atados al progreso de `ScrollTrigger` (pin a 100vh, scrub), overlay de 4 fases, y limpia el ScrollTrigger al desmontar (`gsap.context().revert()`). Respeta `prefers-reduced-motion` (muestra frame final estático).
+- **Etapa 3:** cotización funcional — `components/forms/CotizacionForm.tsx` (client): formulario multi-paso (vehículo → fotos → contacto) que sube hasta 5 fotos (10 MB c/u) a `media/cotizaciones/<leadId>/` e inserta en `leads_cotizacion` con el cliente browser de `lib/supabase/client.ts`. Checkbox "solo chapa y pintura" obligatorio (validado también por RLS). Tabla `leads_cotizacion` y bucket privado `media` creados vía migración; RLS: anon solo INSERT (leads con `estado='nuevo'` y checkbox aceptado; uploads solo bajo `cotizaciones/`), sin SELECT anónimo.
 
-No hay lógica de backend aún (Etapa 3 en adelante).
+Falta backend de admin y portal cliente (Etapas 4 y 5).
 
 > **Nota Tailwind v4:** para agregar colores/fuentes se editan las variables `--color-*` / `--font-*` en el bloque `@theme` de `globals.css`, NO un archivo de config JS.
 
@@ -32,7 +34,7 @@ No hay lógica de backend aún (Etapa 3 en adelante).
 
 - `app/` — App Router. `layout.tsx` carga fuentes (Oswald display + Inter body vía `next/font`) y aplica `bg-negro text-crema`. `globals.css` define el sistema de diseño (`@theme`).
 - `components/layout/` — `Navbar` (client, menú hamburguesa), `Footer`. `components/sections/` — Hero, Taller, Servicios, Portfolio, Contacto. `components/scroll/CanvasScroll.tsx` — animación de scroll. `components/ui/` — primitivos reutilizables.
-- `lib/` — reservado para clientes Supabase / helpers (Etapa 3+).
+- `lib/supabase/client.ts` — cliente browser (`createBrowserClient` de `@supabase/ssr`). El cliente server/middleware llegará en la Etapa 4. `components/forms/` — formularios client.
 - `public/assets/scroll-sequence/` — **121 frames WebP a 1920×1080** ya copiados (`frame_00001`…`frame_00121`).
 - **Pendiente conocido (móvil):** la animación carga siempre la secuencia full (1920px, ~1 GB decodificado con los 121 frames) — pesado en móvil. Se usará una secuencia WebP optimizada aparte para móvil más adelante (ver TODO en `CanvasScroll.tsx`).
 
@@ -40,7 +42,7 @@ No hay lógica de backend aún (Etapa 3 en adelante).
 
 1. ✅ **Scaffolding + maquetación estática** de toda la Home (Lorem Ipsum + placeholders).
 2. ✅ **Animación de scroll "El Viaje del Metal"** — `<CanvasScroll>` con GSAP `ScrollTrigger`, pinning a 100vh, secuencia de 121 frames WebP.
-3. **Backend Supabase + cotización** — formulario multi-paso que inserta en `leads_cotizacion` y sube fotos al bucket `media`.
+3. ✅ **Backend Supabase + cotización** — formulario multi-paso que inserta en `leads_cotizacion` y sube fotos al bucket `media` (privado).
 4. **Panel `/admin` (CMS)** — Auth con `@supabase/ssr`, rutas protegidas por middleware, revisión de leads y CRUD de portfolio.
 5. **Portal del cliente** — `/cliente/dashboard` con seguimiento en vivo, protegido por RLS (cada cliente ve solo su auto).
 

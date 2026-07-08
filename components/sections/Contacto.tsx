@@ -1,4 +1,5 @@
-import { Upload, TriangleAlert } from "lucide-react";
+import { TriangleAlert } from "lucide-react";
+import { CotizacionForm } from "@/components/forms/CotizacionForm";
 
 export function Contacto() {
   return (
@@ -33,58 +34,8 @@ export function Contacto() {
           </div>
         </div>
 
-        {/* Vista previa estática del formulario multi-paso (Etapa 3) */}
-        <form className="space-y-5 border border-metal-oscuro bg-negro p-8" aria-label="Formulario de cotización (maqueta)">
-          <div className="flex items-center gap-2 font-display text-xs uppercase tracking-widest text-metal">
-            <span className="text-rojo">Paso 1</span> / 3 · Datos del vehículo
-          </div>
-
-          <Field label="Nombre">
-            <input type="text" placeholder="Tu nombre" className={inputClass} />
-          </Field>
-          <Field label="Vehículo">
-            <input type="text" placeholder="Marca, modelo y año" className={inputClass} />
-          </Field>
-          <Field label="Descripción del trabajo">
-            <textarea rows={3} placeholder="Contanos qué necesita tu auto…" className={inputClass} />
-          </Field>
-
-          <div>
-            <span className="mb-2 block font-display text-xs uppercase tracking-widest text-metal">
-              Fotos del vehículo
-            </span>
-            <div className="flex flex-col items-center justify-center gap-2 border border-dashed border-metal-oscuro bg-carbon px-4 py-8 text-center text-metal">
-              <Upload className="h-6 w-6 text-rojo" strokeWidth={1.5} />
-              <span className="text-sm">Arrastrá tus imágenes o seleccioná archivos</span>
-              <span className="text-xs text-metal-oscuro">JPG · PNG · WEBP</span>
-            </div>
-          </div>
-
-          <button
-            type="button"
-            className="w-full border border-rojo bg-rojo px-6 py-4 font-display text-sm uppercase tracking-widest text-crema transition-colors hover:bg-rojo-claro hover:border-rojo-claro"
-          >
-            Continuar
-          </button>
-          <p className="text-center text-xs text-metal-oscuro">
-            Maqueta sin funcionalidad — se conecta a Supabase en la Etapa 3.
-          </p>
-        </form>
+        <CotizacionForm />
       </div>
     </section>
-  );
-}
-
-const inputClass =
-  "w-full border border-metal-oscuro bg-carbon px-4 py-3 text-sm text-crema placeholder:text-metal-oscuro focus:border-rojo focus:outline-none";
-
-function Field({ label, children }: { label: string; children: React.ReactNode }) {
-  return (
-    <label className="block">
-      <span className="mb-2 block font-display text-xs uppercase tracking-widest text-metal">
-        {label}
-      </span>
-      {children}
-    </label>
   );
 }
