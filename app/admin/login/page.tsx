@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { LoaderCircle, Wrench } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
@@ -89,6 +90,13 @@ export default function LoginPage() {
             {enviando && <LoaderCircle className="h-4 w-4 animate-spin" />}
             {enviando ? "Ingresando…" : "Ingresar"}
           </button>
+
+          <Link
+            href="/recuperar"
+            className="block text-center text-xs text-metal transition-colors hover:text-crema"
+          >
+            ¿Olvidaste tu contraseña?
+          </Link>
         </form>
       </div>
     </main>

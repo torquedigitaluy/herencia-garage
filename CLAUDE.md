@@ -23,7 +23,9 @@ El proyecto usa Next.js (App Router) y Supabase, dividiendo el trabajo en un sit
 
 - **Etapa 5:** portal del cliente — `app/cliente/login/` + route group `app/cliente/(portal)/` con `dashboard/` (timeline de 5 fases de `lib/fases.ts`, barra de avance y bitácora con URLs firmadas). Tablas `proyectos_activos` y `bitacora_fotos`; fotos de bitácora en `media/proyectos/<proyectoId>/`. RLS verificado: cada cliente ve solo su proyecto/bitácora/fotos. En el admin: `/admin/proyectos` (crear proyecto, crear cuenta de cliente vía server action con `lib/supabase/admin.ts` — service role, SOLO servidor, verifica rol admin antes) y detalle con fase/avance + subida de bitácora. `proxy.ts` cubre `/admin/:path*` y `/cliente/:path*`.
 
-Roadmap inicial completo. Próximos pasos posibles: contenido real (textos/fotos), deploy (Vercel), secuencia de scroll optimizada para móvil, página de restablecer contraseña.
+- **Post-roadmap:** recuperación de contraseña — `/recuperar` (pide email, `resetPasswordForEmail`), `app/auth/confirm/route.ts` (valida `token_hash` o `code` PKCE del link del email y deja sesión en cookies) y `/restablecer` (nueva contraseña con `updateUser`, redirige según rol). Links "¿Olvidaste tu contraseña?" en ambos logins. Requiere Site URL / Redirect URLs configuradas en Supabase Auth.
+
+**Deploy:** producción en https://herencia-garage.vercel.app (Vercel, team `torque-digital`). `origin` = `torquedigitaluy/herencia-garage`; **cada push a `main` despliega automáticamente**. Env vars de Supabase cargadas en Vercel (Production). Próximos pasos posibles: contenido real (textos/fotos), secuencia de scroll optimizada para móvil.
 
 > **Nota Tailwind v4:** para agregar colores/fuentes se editan las variables `--color-*` / `--font-*` en el bloque `@theme` de `globals.css`, NO un archivo de config JS.
 
