@@ -30,6 +30,11 @@ export function Footer() {
               <li><Link href="#servicios" className="hover:text-crema">Servicios</Link></li>
               <li><Link href="#portfolio" className="hover:text-crema">Portfolio</Link></li>
               <li><Link href="#contacto" className="hover:text-crema">Cotizar</Link></li>
+              <li className="pt-2">
+                <Link href="/cliente/login" className="text-crema/80 hover:text-crema">
+                  Acceso clientes →
+                </Link>
+              </li>
             </ul>
           </div>
 

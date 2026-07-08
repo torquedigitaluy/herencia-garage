@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { Menu, X, UserRound } from "lucide-react";
 
 const links = [
   { href: "#taller", label: "El Taller" },
@@ -62,6 +62,13 @@ export function Navbar() {
 
         <div className="flex items-center gap-2">
           <Link
+            href="/cliente/login"
+            className="hidden items-center gap-1.5 px-3 py-2 font-display text-xs uppercase tracking-widest text-metal transition-colors hover:text-crema md:flex"
+          >
+            <UserRound className="h-4 w-4" strokeWidth={1.5} />
+            Clientes
+          </Link>
+          <Link
             href="#contacto"
             className="hidden border border-rojo bg-rojo px-4 py-2 font-display text-xs uppercase tracking-widest text-crema transition-colors hover:bg-rojo-claro hover:border-rojo-claro sm:inline-block"
           >
@@ -105,6 +112,16 @@ export function Navbar() {
               </Link>
             </li>
           ))}
+          <li className="border-b border-metal-oscuro/40">
+            <Link
+              href="/cliente/login"
+              onClick={() => setOpen(false)}
+              className="flex items-center gap-2 py-4 font-display text-sm uppercase tracking-widest text-metal transition-colors hover:text-crema"
+            >
+              <UserRound className="h-4 w-4" strokeWidth={1.5} />
+              Acceso clientes
+            </Link>
+          </li>
           <li className="py-4">
             <Link
               href="#contacto"
