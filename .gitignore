@@ -34,6 +34,10 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env*
 
+# credenciales locales (user/pass de admin y clientes) — nunca commitear
+credenciales.local.md
+*.local.md
+
 # vercel
 .vercel
 
