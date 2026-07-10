@@ -8,11 +8,9 @@ import { createClient } from "@/lib/supabase/client";
 export function PortfolioAcciones({
   id,
   destacado,
-  fotos,
 }: {
   id: string;
   destacado: boolean;
-  fotos: string[];
 }) {
   const router = useRouter();
   const [ocupado, setOcupado] = useState(false);
@@ -33,8 +31,24 @@ export function PortfolioAcciones({
     }
     setOcupado(true);
     const supabase = createClient();
+
+    // Reunir todos los archivos del proyecto antes de borrarlo (el delete
+    // borra la galería por cascade en la DB, pero no en storage).
+    const { data: proyecto } = await supabase
+      .from("portfolio_publico")
+      .select("foto_antes_url, foto_despues_url, portfolio_fotos(url_foto)")
+      .eq("id", id)
+      .single();
+    const archivos = [
+      proyecto?.foto_antes_url,
+      proyecto?.foto_despues_url,
+      ...(proyecto?.portfolio_fotos ?? []).map((f: { url_foto: string }) => f.url_foto),
+    ].filter((p): p is string => Boolean(p));
+
     await supabase.from("portfolio_publico").delete().eq("id", id);
-    await supabase.storage.from("portfolio").remove(fotos);
+    if (archivos.length > 0) {
+      await supabase.storage.from("portfolio").remove(archivos);
+    }
     setOcupado(false);
     router.refresh();
   }

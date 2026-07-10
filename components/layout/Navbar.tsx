@@ -4,11 +4,12 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Menu, X, UserRound } from "lucide-react";
 
+// Los anchors llevan "/" para funcionar también desde rutas internas (ej. /portfolio/[slug]).
 const links = [
-  { href: "#taller", label: "El Taller" },
-  { href: "#servicios", label: "Servicios" },
-  { href: "#restauracion", label: "Restauración por etapas" },
-  { href: "#portfolio", label: "Portfolio" },
+  { href: "/#taller", label: "El Taller" },
+  { href: "/#servicios", label: "Servicios" },
+  { href: "/#restauracion", label: "Restauración por etapas" },
+  { href: "/#portfolio", label: "Portfolio" },
 ];
 
 export function Navbar() {
@@ -69,7 +70,7 @@ export function Navbar() {
             Clientes
           </Link>
           <Link
-            href="#contacto"
+            href="/#contacto"
             className="hidden border border-amarillo bg-amarillo px-4 py-2 font-display text-xs uppercase tracking-widest text-negro transition-colors hover:bg-amarillo-claro hover:border-amarillo-claro sm:inline-block"
           >
             Cotizar
@@ -124,7 +125,7 @@ export function Navbar() {
           </li>
           <li className="py-4">
             <Link
-              href="#contacto"
+              href="/#contacto"
               onClick={() => setOpen(false)}
               className="block border border-amarillo bg-amarillo px-4 py-3 text-center font-display text-sm uppercase tracking-widest text-negro transition-colors hover:bg-amarillo-claro hover:border-amarillo-claro"
             >

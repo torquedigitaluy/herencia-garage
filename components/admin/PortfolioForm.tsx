@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { LoaderCircle, Plus } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
+import { slugify } from "@/lib/portfolio";
 
 const inputClass =
   "w-full border border-metal-oscuro bg-negro px-4 py-3 text-sm text-crema placeholder:text-metal-oscuro focus:border-amarillo focus:outline-none";
@@ -11,6 +12,7 @@ const inputClass =
 export function PortfolioForm() {
   const router = useRouter();
   const [titulo, setTitulo] = useState("");
+  const [anio, setAnio] = useState("");
   const [descripcion, setDescripcion] = useState("");
   const [fotoAntes, setFotoAntes] = useState<File | null>(null);
   const [fotoDespues, setFotoDespues] = useState<File | null>(null);
@@ -20,7 +22,6 @@ export function PortfolioForm() {
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (!fotoAntes || !fotoDespues) return;
     setGuardando(true);
     setError(null);
 
@@ -36,20 +37,29 @@ export function PortfolioForm() {
         return path;
       };
 
-      const antesPath = await subir(fotoAntes, "antes");
-      const despuesPath = await subir(fotoDespues, "despues");
+      const antesPath = fotoAntes ? await subir(fotoAntes, "antes") : null;
+      const despuesPath = fotoDespues ? await subir(fotoDespues, "despues") : null;
 
       const { error: insertError } = await supabase.from("portfolio_publico").insert({
         id,
         titulo: titulo.trim(),
+        slug: slugify(`${titulo} ${anio}`),
+        anio: anio.trim() || null,
         descripcion: descripcion.trim() || null,
         foto_antes_url: antesPath,
         foto_despues_url: despuesPath,
         destacado,
       });
-      if (insertError) throw new Error(insertError.message);
+      if (insertError) {
+        throw new Error(
+          insertError.code === "23505"
+            ? "Ya existe un proyecto con ese título y año."
+            : insertError.message
+        );
+      }
 
       setTitulo("");
+      setAnio("");
       setDescripcion("");
       setFotoAntes(null);
       setFotoDespues(null);
@@ -75,11 +85,24 @@ export function PortfolioForm() {
         </span>
         <input
           type="text"
-          placeholder="Ej: Ford Mustang Fastback 1967"
+          placeholder="Ej: Ford Mustang Fastback"
           className={inputClass}
           value={titulo}
           onChange={(e) => setTitulo(e.target.value)}
           required
+        />
+      </label>
+
+      <label className="block">
+        <span className="mb-2 block font-display text-xs uppercase tracking-widest text-metal">
+          Año
+        </span>
+        <input
+          type="text"
+          placeholder="Ej: 1967"
+          className={inputClass}
+          value={anio}
+          onChange={(e) => setAnio(e.target.value)}
         />
       </label>
 
@@ -98,12 +121,11 @@ export function PortfolioForm() {
 
       <label className="block">
         <span className="mb-2 block font-display text-xs uppercase tracking-widest text-metal">
-          Foto ANTES
+          Foto ANTES (opcional)
         </span>
         <input
           type="file"
           accept="image/jpeg,image/png,image/webp"
-          required
           onChange={(e) => setFotoAntes(e.target.files?.[0] ?? null)}
           className="w-full text-sm text-metal file:mr-3 file:border file:border-metal-oscuro file:bg-negro file:px-3 file:py-2 file:font-display file:text-xs file:uppercase file:tracking-widest file:text-crema"
         />
@@ -111,12 +133,11 @@ export function PortfolioForm() {
 
       <label className="block">
         <span className="mb-2 block font-display text-xs uppercase tracking-widest text-metal">
-          Foto DESPUÉS
+          Foto DESPUÉS (opcional)
         </span>
         <input
           type="file"
           accept="image/jpeg,image/png,image/webp"
-          required
           onChange={(e) => setFotoDespues(e.target.files?.[0] ?? null)}
           className="w-full text-sm text-metal file:mr-3 file:border file:border-metal-oscuro file:bg-negro file:px-3 file:py-2 file:font-display file:text-xs file:uppercase file:tracking-widest file:text-crema"
         />
@@ -131,6 +152,11 @@ export function PortfolioForm() {
         />
         Destacado (aparece en grande en la landing)
       </label>
+
+      <p className="text-xs leading-relaxed text-metal">
+        La historia, los problemas, las soluciones y la galería se cargan
+        después, editando el proyecto desde la lista.
+      </p>
 
       {error && (
         <p role="alert" className="border border-amarillo/40 bg-amarillo/5 p-3 text-sm text-crema">
