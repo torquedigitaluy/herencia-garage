@@ -38,6 +38,10 @@ yarn-error.log*
 credenciales.local.md
 *.local.md
 
+# documentación interna del proyecto — solo local, no publicar
+PLAN.md
+HG_project.md
+
 # vercel
 .vercel
 
