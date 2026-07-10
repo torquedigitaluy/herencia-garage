@@ -10,8 +10,8 @@
   --color-carbon: #1a1a1a; /* Superficies elevadas (cards, secciones) */
   --color-metal: #8e9196; /* Gris industrial — bordes, divisores, texto secundario */
   --color-metal-oscuro: #3a3d40; /* Bordes sutiles sobre negro */
-  --color-rojo: #9b111e; /* Rojo automotriz (Candy Apple Red) — acento / CTA */
-  --color-rojo-claro: #c21a2b; /* Hover del acento */
+  --color-amarillo: #f5b50a; /* Amarillo automotriz (Grabber Yellow) — acento / CTA */
+  --color-amarillo-claro: #ffc933; /* Hover del acento */
   --color-azul: #1c39bb; /* Azul vintage — acento alternativo reservado */
   --color-crema: #f4f1ea; /* Off-white — texto principal sobre fondos oscuros */
 
@@ -33,8 +33,8 @@ body {
 }
 
 ::selection {
-  background: var(--color-rojo);
-  color: var(--color-crema);
+  background: var(--color-amarillo);
+  color: var(--color-negro);
 }
 
 @media (prefers-reduced-motion: reduce) {

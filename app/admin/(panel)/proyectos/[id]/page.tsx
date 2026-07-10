@@ -52,7 +52,7 @@ export default async function ProyectoDetallePage({
             {proyecto.vehiculo}
           </h1>
           <p className="mt-2 flex items-center gap-2 text-sm text-metal">
-            <User className="h-4 w-4 text-rojo" />
+            <User className="h-4 w-4 text-amarillo" />
             {proyecto.profiles?.email ?? "cliente sin email"}
           </p>
         </div>

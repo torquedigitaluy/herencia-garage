@@ -30,7 +30,7 @@ export function BitacoraEliminar({
       onClick={eliminar}
       disabled={ocupado}
       title="Eliminar"
-      className="shrink-0 border border-metal-oscuro p-2 text-metal transition-colors hover:border-rojo hover:text-rojo disabled:opacity-50"
+      className="shrink-0 border border-metal-oscuro p-2 text-metal transition-colors hover:border-amarillo hover:text-amarillo disabled:opacity-50"
     >
       {ocupado ? (
         <LoaderCircle className="h-4 w-4 animate-spin" />

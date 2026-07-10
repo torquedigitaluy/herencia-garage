@@ -64,7 +64,7 @@ export default async function LeadDetallePage({
             {lead.nombre}
           </p>
           <p className="flex items-center gap-2 text-sm text-metal">
-            <Phone className="h-4 w-4 text-rojo" />
+            <Phone className="h-4 w-4 text-amarillo" />
             <a
               href={`https://wa.me/${lead.telefono.replace(/\D/g, "")}`}
               target="_blank"
@@ -75,7 +75,7 @@ export default async function LeadDetallePage({
           </p>
           {lead.email && (
             <p className="flex items-center gap-2 text-sm text-metal">
-              <Mail className="h-4 w-4 text-rojo" />
+              <Mail className="h-4 w-4 text-amarillo" />
               <a href={`mailto:${lead.email}`} className="hover:text-crema">
                 {lead.email}
               </a>

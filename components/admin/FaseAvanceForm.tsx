@@ -52,7 +52,7 @@ export function FaseAvanceForm({
         <select
           value={fase}
           onChange={(e) => setFase(e.target.value)}
-          className="w-full border border-metal-oscuro bg-negro px-4 py-3 font-display text-xs uppercase tracking-widest text-crema focus:border-rojo focus:outline-none"
+          className="w-full border border-metal-oscuro bg-negro px-4 py-3 font-display text-xs uppercase tracking-widest text-crema focus:border-amarillo focus:outline-none"
         >
           {FASES.map((f) => (
             <option key={f.key} value={f.key}>
@@ -64,7 +64,7 @@ export function FaseAvanceForm({
 
       <label className="block">
         <span className="mb-2 flex items-center justify-between font-display text-xs uppercase tracking-widest text-metal">
-          Avance <span className="text-rojo">{avance}%</span>
+          Avance <span className="text-amarillo">{avance}%</span>
         </span>
         <input
           type="range"
@@ -73,12 +73,12 @@ export function FaseAvanceForm({
           step={5}
           value={avance}
           onChange={(e) => setAvance(Number(e.target.value))}
-          className="w-full accent-rojo"
+          className="w-full accent-amarillo"
         />
       </label>
 
       {error && (
-        <p role="alert" className="border border-rojo/40 bg-rojo/5 p-3 text-sm text-crema">
+        <p role="alert" className="border border-amarillo/40 bg-amarillo/5 p-3 text-sm text-crema">
           {error}
         </p>
       )}
@@ -86,7 +86,7 @@ export function FaseAvanceForm({
       <button
         type="submit"
         disabled={guardando}
-        className="flex w-full items-center justify-center gap-2 border border-rojo bg-rojo px-6 py-3 font-display text-sm uppercase tracking-widest text-crema transition-colors hover:border-rojo-claro hover:bg-rojo-claro disabled:opacity-50"
+        className="flex w-full items-center justify-center gap-2 border border-amarillo bg-amarillo px-6 py-3 font-display text-sm uppercase tracking-widest text-negro transition-colors hover:border-amarillo-claro hover:bg-amarillo-claro disabled:opacity-50"
       >
         {guardando ? <LoaderCircle className="h-4 w-4 animate-spin" /> : <Save className="h-4 w-4" />}
         {guardando ? "Guardando…" : "Guardar cambios"}

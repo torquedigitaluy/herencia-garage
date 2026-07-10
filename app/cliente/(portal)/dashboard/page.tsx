@@ -49,7 +49,7 @@ export default async function ClienteDashboardPage() {
           return (
             <section key={proyecto.id}>
               <p className="flex items-center gap-3 font-display text-xs uppercase tracking-[0.35em] text-metal">
-                <span className="h-px w-10 bg-rojo" />
+                <span className="h-px w-10 bg-amarillo" />
                 Proyecto activo
               </p>
               <h1 className="mt-4 font-display text-4xl font-bold uppercase leading-tight text-crema">
@@ -62,13 +62,13 @@ export default async function ClienteDashboardPage() {
                   <p className="font-display text-xs uppercase tracking-widest text-metal">
                     Avance general
                   </p>
-                  <p className="font-display text-3xl font-bold text-rojo">
+                  <p className="font-display text-3xl font-bold text-amarillo">
                     {proyecto.porcentaje_avance}%
                   </p>
                 </div>
                 <div className="mt-3 h-2 w-full bg-negro">
                   <div
-                    className="h-full bg-rojo transition-all"
+                    className="h-full bg-amarillo transition-all"
                     style={{ width: `${proyecto.porcentaje_avance}%` }}
                   />
                 </div>
@@ -83,9 +83,9 @@ export default async function ClienteDashboardPage() {
                         <span
                           className={`flex h-8 w-8 shrink-0 items-center justify-center border font-display text-xs sm:mb-3 ${
                             completada
-                              ? "border-rojo bg-rojo text-crema"
+                              ? "border-amarillo bg-amarillo text-negro"
                               : actual
-                                ? "border-rojo text-rojo"
+                                ? "border-amarillo text-amarillo"
                                 : "border-metal-oscuro text-metal-oscuro"
                           }`}
                         >
@@ -98,7 +98,7 @@ export default async function ClienteDashboardPage() {
                         >
                           {fase.label}
                           {actual && (
-                            <span className="mt-1 block text-[10px] text-rojo">En curso</span>
+                            <span className="mt-1 block text-[10px] text-amarillo">En curso</span>
                           )}
                         </p>
                       </li>
@@ -119,7 +119,7 @@ export default async function ClienteDashboardPage() {
                 <ol className="mt-6 space-y-8 border-l border-metal-oscuro pl-6">
                   {bitacora.map((entrada) => (
                     <li key={entrada.id} className="relative">
-                      <span className="absolute -left-[1.85rem] top-1 h-2.5 w-2.5 bg-rojo" />
+                      <span className="absolute -left-[1.85rem] top-1 h-2.5 w-2.5 bg-amarillo" />
                       <time className="font-display text-xs uppercase tracking-widest text-metal">
                         {new Date(entrada.fecha).toLocaleDateString("es-UY", {
                           day: "2-digit",

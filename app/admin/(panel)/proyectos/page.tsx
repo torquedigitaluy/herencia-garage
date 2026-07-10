@@ -62,7 +62,7 @@ export default async function ProyectosAdminPage() {
                     <span className="border border-metal-oscuro px-2 py-1 font-display text-[10px] uppercase tracking-widest text-metal">
                       {faseLabel(p.fase_actual)}
                     </span>
-                    <span className="font-display text-sm font-bold text-rojo">
+                    <span className="font-display text-sm font-bold text-amarillo">
                       {p.porcentaje_avance}%
                     </span>
                     <ChevronRight className="h-4 w-4 text-metal" />

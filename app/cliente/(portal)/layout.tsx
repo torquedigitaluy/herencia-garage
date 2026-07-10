@@ -17,7 +17,7 @@ export default async function ClienteLayout({ children }: { children: React.Reac
       <header className="border-b border-metal-oscuro bg-carbon">
         <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-4 px-6 py-4">
           <Link href="/cliente/dashboard" className="flex items-center gap-2">
-            <Car className="h-5 w-5 text-rojo" strokeWidth={1.5} />
+            <Car className="h-5 w-5 text-amarillo" strokeWidth={1.5} />
             <span className="font-display text-sm font-bold uppercase tracking-wide text-crema">
               Herencia Garage · Mi restauración
             </span>

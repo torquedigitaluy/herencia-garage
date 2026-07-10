@@ -7,7 +7,7 @@ import { Menu, X, UserRound } from "lucide-react";
 const links = [
   { href: "#taller", label: "El Taller" },
   { href: "#servicios", label: "Servicios" },
-  { href: "#viaje", label: "El Viaje" },
+  { href: "#restauracion", label: "Restauración por etapas" },
   { href: "#portfolio", label: "Portfolio" },
 ];
 
@@ -41,7 +41,7 @@ export function Navbar() {
           <span className="font-display text-xl font-bold uppercase tracking-wide text-crema">
             Herencia
           </span>
-          <span className="font-display text-xl font-medium uppercase tracking-[0.3em] text-rojo">
+          <span className="font-display text-xl font-medium uppercase tracking-[0.3em] text-amarillo">
             Garage
           </span>
         </Link>
@@ -70,7 +70,7 @@ export function Navbar() {
           </Link>
           <Link
             href="#contacto"
-            className="hidden border border-rojo bg-rojo px-4 py-2 font-display text-xs uppercase tracking-widest text-crema transition-colors hover:bg-rojo-claro hover:border-rojo-claro sm:inline-block"
+            className="hidden border border-amarillo bg-amarillo px-4 py-2 font-display text-xs uppercase tracking-widest text-negro transition-colors hover:bg-amarillo-claro hover:border-amarillo-claro sm:inline-block"
           >
             Cotizar
           </Link>
@@ -82,7 +82,7 @@ export function Navbar() {
             aria-label={open ? "Cerrar menú" : "Abrir menú"}
             aria-expanded={open}
             aria-controls="menu-movil"
-            className="-mr-2 flex h-11 w-11 items-center justify-center text-crema transition-colors hover:text-rojo md:hidden"
+            className="-mr-2 flex h-11 w-11 items-center justify-center text-crema transition-colors hover:text-amarillo md:hidden"
           >
             {open ? (
               <X className="h-6 w-6" strokeWidth={1.5} />
@@ -126,7 +126,7 @@ export function Navbar() {
             <Link
               href="#contacto"
               onClick={() => setOpen(false)}
-              className="block border border-rojo bg-rojo px-4 py-3 text-center font-display text-sm uppercase tracking-widest text-crema transition-colors hover:bg-rojo-claro hover:border-rojo-claro"
+              className="block border border-amarillo bg-amarillo px-4 py-3 text-center font-display text-sm uppercase tracking-widest text-negro transition-colors hover:bg-amarillo-claro hover:border-amarillo-claro"
             >
               Cotizar
             </Link>

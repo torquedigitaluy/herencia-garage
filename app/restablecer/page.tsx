@@ -55,7 +55,7 @@ export default function RestablecerPage() {
     <main className="flex min-h-dvh items-center justify-center bg-negro px-6">
       <div className="w-full max-w-sm">
         <div className="mb-8 flex items-center gap-3">
-          <LockKeyhole className="h-6 w-6 text-rojo" strokeWidth={1.5} />
+          <LockKeyhole className="h-6 w-6 text-amarillo" strokeWidth={1.5} />
           <div>
             <p className="font-display text-lg font-bold uppercase tracking-wide text-crema">
               Herencia Garage
@@ -68,7 +68,7 @@ export default function RestablecerPage() {
 
         {sesionOk === null ? (
           <div className="flex justify-center border border-metal-oscuro bg-carbon p-12">
-            <LoaderCircle className="h-6 w-6 animate-spin text-rojo" />
+            <LoaderCircle className="h-6 w-6 animate-spin text-amarillo" />
           </div>
         ) : !sesionOk ? (
           <div className="space-y-4 border border-metal-oscuro bg-carbon p-8 text-center">
@@ -78,7 +78,7 @@ export default function RestablecerPage() {
             </p>
             <Link
               href="/recuperar"
-              className="inline-block border border-rojo px-6 py-3 font-display text-sm uppercase tracking-widest text-rojo transition-colors hover:bg-rojo hover:text-crema"
+              className="inline-block border border-amarillo px-6 py-3 font-display text-sm uppercase tracking-widest text-amarillo transition-colors hover:bg-amarillo hover:text-negro"
             >
               Pedir link nuevo
             </Link>
@@ -97,7 +97,7 @@ export default function RestablecerPage() {
                 minLength={8}
                 autoComplete="new-password"
                 placeholder="Mínimo 8 caracteres"
-                className="w-full border border-metal-oscuro bg-negro px-4 py-3 text-sm text-crema placeholder:text-metal-oscuro focus:border-rojo focus:outline-none"
+                className="w-full border border-metal-oscuro bg-negro px-4 py-3 text-sm text-crema placeholder:text-metal-oscuro focus:border-amarillo focus:outline-none"
               />
             </label>
             <label className="block">
@@ -111,12 +111,12 @@ export default function RestablecerPage() {
                 required
                 minLength={8}
                 autoComplete="new-password"
-                className="w-full border border-metal-oscuro bg-negro px-4 py-3 text-sm text-crema placeholder:text-metal-oscuro focus:border-rojo focus:outline-none"
+                className="w-full border border-metal-oscuro bg-negro px-4 py-3 text-sm text-crema placeholder:text-metal-oscuro focus:border-amarillo focus:outline-none"
               />
             </label>
 
             {error && (
-              <p role="alert" className="border border-rojo/40 bg-rojo/5 p-3 text-sm text-crema">
+              <p role="alert" className="border border-amarillo/40 bg-amarillo/5 p-3 text-sm text-crema">
                 {error}
               </p>
             )}
@@ -124,7 +124,7 @@ export default function RestablecerPage() {
             <button
               type="submit"
               disabled={guardando}
-              className="flex w-full items-center justify-center gap-2 border border-rojo bg-rojo px-6 py-4 font-display text-sm uppercase tracking-widest text-crema transition-colors hover:border-rojo-claro hover:bg-rojo-claro disabled:opacity-50"
+              className="flex w-full items-center justify-center gap-2 border border-amarillo bg-amarillo px-6 py-4 font-display text-sm uppercase tracking-widest text-negro transition-colors hover:border-amarillo-claro hover:bg-amarillo-claro disabled:opacity-50"
             >
               {guardando && <LoaderCircle className="h-4 w-4 animate-spin" />}
               {guardando ? "Guardando…" : "Guardar contraseña"}

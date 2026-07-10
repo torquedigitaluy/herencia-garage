@@ -11,7 +11,7 @@ const TIPOS_PERMITIDOS = ["image/jpeg", "image/png", "image/webp", "image/heic",
 const PASOS = ["Datos del vehículo", "Fotos", "Contacto"] as const;
 
 const inputClass =
-  "w-full border border-metal-oscuro bg-carbon px-4 py-3 text-sm text-crema placeholder:text-metal-oscuro focus:border-rojo focus:outline-none";
+  "w-full border border-metal-oscuro bg-carbon px-4 py-3 text-sm text-crema placeholder:text-metal-oscuro focus:border-amarillo focus:outline-none";
 
 export function CotizacionForm() {
   const [paso, setPaso] = useState(0);
@@ -95,7 +95,7 @@ export function CotizacionForm() {
   if (enviado) {
     return (
       <div className="flex flex-col items-center gap-4 border border-metal-oscuro bg-negro p-8 py-16 text-center">
-        <CircleCheck className="h-12 w-12 text-rojo" strokeWidth={1.5} />
+        <CircleCheck className="h-12 w-12 text-amarillo" strokeWidth={1.5} />
         <h3 className="font-display text-2xl font-bold uppercase">Solicitud recibida</h3>
         <p className="max-w-sm text-sm leading-relaxed text-metal">
           Gracias, {nombre.trim().split(" ")[0]}. Vamos a revisar el estado de tu{" "}
@@ -117,7 +117,7 @@ export function CotizacionForm() {
       }}
     >
       <div className="flex items-center gap-2 font-display text-xs uppercase tracking-widest text-metal">
-        <span className="text-rojo">Paso {paso + 1}</span> / {PASOS.length} · {PASOS[paso]}
+        <span className="text-amarillo">Paso {paso + 1}</span> / {PASOS.length} · {PASOS[paso]}
       </div>
 
       {paso === 0 && (
@@ -172,9 +172,9 @@ export function CotizacionForm() {
                 e.preventDefault();
                 agregarFotos(e.dataTransfer.files);
               }}
-              className="flex w-full flex-col items-center justify-center gap-2 border border-dashed border-metal-oscuro bg-carbon px-4 py-8 text-center text-metal transition-colors hover:border-rojo"
+              className="flex w-full flex-col items-center justify-center gap-2 border border-dashed border-metal-oscuro bg-carbon px-4 py-8 text-center text-metal transition-colors hover:border-amarillo"
             >
-              <Upload className="h-6 w-6 text-rojo" strokeWidth={1.5} />
+              <Upload className="h-6 w-6 text-amarillo" strokeWidth={1.5} />
               <span className="text-sm">Arrastrá tus imágenes o seleccioná archivos</span>
               <span className="text-xs text-metal-oscuro">
                 JPG · PNG · WEBP · HEIC — máx. {MAX_MB} MB c/u
@@ -196,7 +196,7 @@ export function CotizacionForm() {
                     type="button"
                     aria-label={`Quitar ${foto.name}`}
                     onClick={() => setFotos(fotos.filter((_, j) => j !== i))}
-                    className="absolute -right-2 -top-2 border border-metal-oscuro bg-negro p-1 text-metal transition-colors hover:border-rojo hover:text-crema"
+                    className="absolute -right-2 -top-2 border border-metal-oscuro bg-negro p-1 text-metal transition-colors hover:border-amarillo hover:text-crema"
                   >
                     <X className="h-3 w-3" />
                   </button>
@@ -239,12 +239,12 @@ export function CotizacionForm() {
             />
           </Field>
 
-          <label className="flex cursor-pointer items-start gap-3 border border-rojo/40 bg-rojo/5 p-4">
+          <label className="flex cursor-pointer items-start gap-3 border border-amarillo/40 bg-amarillo/5 p-4">
             <input
               type="checkbox"
               checked={aceptaSoloChapa}
               onChange={(e) => setAceptaSoloChapa(e.target.checked)}
-              className="mt-0.5 h-4 w-4 shrink-0 accent-rojo"
+              className="mt-0.5 h-4 w-4 shrink-0 accent-amarillo"
               required
             />
             <span className="text-sm leading-relaxed text-metal">
@@ -259,7 +259,7 @@ export function CotizacionForm() {
       )}
 
       {error && (
-        <p role="alert" className="border border-rojo/40 bg-rojo/5 p-3 text-sm text-crema">
+        <p role="alert" className="border border-amarillo/40 bg-amarillo/5 p-3 text-sm text-crema">
           {error}
         </p>
       )}
@@ -278,7 +278,7 @@ export function CotizacionForm() {
         <button
           type="submit"
           disabled={!pasoValido || enviando}
-          className="flex w-full items-center justify-center gap-2 border border-rojo bg-rojo px-6 py-4 font-display text-sm uppercase tracking-widest text-crema transition-colors hover:border-rojo-claro hover:bg-rojo-claro disabled:cursor-not-allowed disabled:opacity-50"
+          className="flex w-full items-center justify-center gap-2 border border-amarillo bg-amarillo px-6 py-4 font-display text-sm uppercase tracking-widest text-negro transition-colors hover:border-amarillo-claro hover:bg-amarillo-claro disabled:cursor-not-allowed disabled:opacity-50"
         >
           {enviando && <LoaderCircle className="h-4 w-4 animate-spin" />}
           {enviando ? "Enviando…" : paso < PASOS.length - 1 ? "Continuar" : "Enviar solicitud"}

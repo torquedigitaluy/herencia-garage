@@ -41,15 +41,15 @@ export function PortfolioAcciones({
 
   return (
     <div className="flex items-center gap-2">
-      {ocupado && <LoaderCircle className="h-4 w-4 animate-spin text-rojo" />}
+      {ocupado && <LoaderCircle className="h-4 w-4 animate-spin text-amarillo" />}
       <button
         onClick={toggleDestacado}
         disabled={ocupado}
         title={destacado ? "Quitar destacado" : "Marcar como destacado"}
         className={`border p-2 transition-colors disabled:opacity-50 ${
           destacado
-            ? "border-rojo text-rojo hover:border-metal hover:text-metal"
-            : "border-metal-oscuro text-metal hover:border-rojo hover:text-rojo"
+            ? "border-amarillo text-amarillo hover:border-metal hover:text-metal"
+            : "border-metal-oscuro text-metal hover:border-amarillo hover:text-amarillo"
         }`}
       >
         <Star className="h-4 w-4" fill={destacado ? "currentColor" : "none"} />
@@ -58,7 +58,7 @@ export function PortfolioAcciones({
         onClick={eliminar}
         disabled={ocupado}
         title="Eliminar"
-        className="border border-metal-oscuro p-2 text-metal transition-colors hover:border-rojo hover:text-rojo disabled:opacity-50"
+        className="border border-metal-oscuro p-2 text-metal transition-colors hover:border-amarillo hover:text-amarillo disabled:opacity-50"
       >
         <Trash2 className="h-4 w-4" />
       </button>

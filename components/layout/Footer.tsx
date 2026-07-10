@@ -11,7 +11,7 @@ export function Footer() {
               <span className="font-display text-2xl font-bold uppercase tracking-wide">
                 Herencia
               </span>
-              <span className="font-display text-2xl font-medium uppercase tracking-[0.3em] text-rojo">
+              <span className="font-display text-2xl font-medium uppercase tracking-[0.3em] text-amarillo">
                 Garage
               </span>
             </div>
@@ -44,15 +44,15 @@ export function Footer() {
             </h3>
             <ul className="mt-4 space-y-3 text-sm text-metal">
               <li className="flex items-center gap-2">
-                <MapPin className="h-4 w-4 text-rojo" strokeWidth={1.5} />
-                Lorem ipsum 1234, Ciudad
+                <MapPin className="h-4 w-4 text-amarillo" strokeWidth={1.5} />
+                Av. de los Talleres 1234, Montevideo
               </li>
               <li className="flex items-center gap-2">
-                <Phone className="h-4 w-4 text-rojo" strokeWidth={1.5} />
+                <Phone className="h-4 w-4 text-amarillo" strokeWidth={1.5} />
                 +00 000 000 000
               </li>
               <li className="flex items-center gap-2">
-                <Mail className="h-4 w-4 text-rojo" strokeWidth={1.5} />
+                <Mail className="h-4 w-4 text-amarillo" strokeWidth={1.5} />
                 hola@herenciagarage.com
               </li>
             </ul>

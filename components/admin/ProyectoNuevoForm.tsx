@@ -6,7 +6,7 @@ import { LoaderCircle, Plus } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 
 const inputClass =
-  "w-full border border-metal-oscuro bg-negro px-4 py-3 text-sm text-crema placeholder:text-metal-oscuro focus:border-rojo focus:outline-none";
+  "w-full border border-metal-oscuro bg-negro px-4 py-3 text-sm text-crema placeholder:text-metal-oscuro focus:border-amarillo focus:outline-none";
 
 export function ProyectoNuevoForm({
   clientes,
@@ -86,7 +86,7 @@ export function ProyectoNuevoForm({
       </label>
 
       {error && (
-        <p role="alert" className="border border-rojo/40 bg-rojo/5 p-3 text-sm text-crema">
+        <p role="alert" className="border border-amarillo/40 bg-amarillo/5 p-3 text-sm text-crema">
           {error}
         </p>
       )}
@@ -94,7 +94,7 @@ export function ProyectoNuevoForm({
       <button
         type="submit"
         disabled={guardando || clientes.length === 0}
-        className="flex w-full items-center justify-center gap-2 border border-rojo bg-rojo px-6 py-3 font-display text-sm uppercase tracking-widest text-crema transition-colors hover:border-rojo-claro hover:bg-rojo-claro disabled:opacity-50"
+        className="flex w-full items-center justify-center gap-2 border border-amarillo bg-amarillo px-6 py-3 font-display text-sm uppercase tracking-widest text-negro transition-colors hover:border-amarillo-claro hover:bg-amarillo-claro disabled:opacity-50"
       >
         {guardando ? <LoaderCircle className="h-4 w-4 animate-spin" /> : <Plus className="h-4 w-4" />}
         {guardando ? "Creando…" : "Crear proyecto"}

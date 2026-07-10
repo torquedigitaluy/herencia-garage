@@ -6,7 +6,7 @@ import { LoaderCircle, UserPlus } from "lucide-react";
 import { crearCliente } from "@/app/admin/(panel)/proyectos/actions";
 
 const inputClass =
-  "w-full border border-metal-oscuro bg-negro px-4 py-3 text-sm text-crema placeholder:text-metal-oscuro focus:border-rojo focus:outline-none";
+  "w-full border border-metal-oscuro bg-negro px-4 py-3 text-sm text-crema placeholder:text-metal-oscuro focus:border-amarillo focus:outline-none";
 
 export function ClienteNuevoForm() {
   const router = useRouter();
@@ -75,13 +75,13 @@ export function ClienteNuevoForm() {
       </label>
 
       {error && (
-        <p role="alert" className="border border-rojo/40 bg-rojo/5 p-3 text-sm text-crema">
+        <p role="alert" className="border border-amarillo/40 bg-amarillo/5 p-3 text-sm text-crema">
           {error}
         </p>
       )}
       {creado && (
         <p className="border border-metal-oscuro bg-negro p-3 text-sm text-crema">
-          Cuenta creada para <span className="text-rojo">{creado}</span>. Ya podés
+          Cuenta creada para <span className="text-amarillo">{creado}</span>. Ya podés
           asignarle un proyecto.
         </p>
       )}
@@ -89,7 +89,7 @@ export function ClienteNuevoForm() {
       <button
         type="submit"
         disabled={guardando}
-        className="flex w-full items-center justify-center gap-2 border border-metal-oscuro px-6 py-3 font-display text-sm uppercase tracking-widest text-metal transition-colors hover:border-rojo hover:text-crema disabled:opacity-50"
+        className="flex w-full items-center justify-center gap-2 border border-metal-oscuro px-6 py-3 font-display text-sm uppercase tracking-widest text-metal transition-colors hover:border-amarillo hover:text-crema disabled:opacity-50"
       >
         {guardando ? <LoaderCircle className="h-4 w-4 animate-spin" /> : <UserPlus className="h-4 w-4" />}
         {guardando ? "Creando…" : "Crear cliente"}

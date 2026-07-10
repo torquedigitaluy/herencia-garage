@@ -13,10 +13,10 @@ const framePath = (i: number) =>
 
 // Las 4 fases narran el proceso de restauración a lo largo del scroll.
 const fases = [
-  { n: "01", titulo: "Chapa desnuda", texto: "El metal original tal como llega: óxido, golpes e historia." },
-  { n: "02", titulo: "Reparación de chapa", texto: "Enderezado, soldadura y recuperación de la forma." },
-  { n: "03", titulo: "Imprimación", texto: "Masillado y capas de primer: la superficie se vuelve perfecta." },
-  { n: "04", titulo: "Pintura final", texto: "Color de exhibición, pulido y brillo de estudio." },
+  { n: "01", titulo: "Ingreso al taller", texto: "El clásico llega tal como está: óxido, golpes e historia." },
+  { n: "02", titulo: "Chequeo a Fondo", texto: "Desarme e inspección panel por panel para mapear cada daño." },
+  { n: "03", titulo: "Reparación de Chapa", texto: "Enderezado, soldadura y recuperación de la forma original." },
+  { n: "04", titulo: "Imprimación y Pintura", texto: "Masillado, primer y color de exhibición: pulido y brillo de estudio." },
 ];
 
 /** Dibuja la imagen cubriendo el canvas (object-fit: cover), en píxeles de dispositivo. */
@@ -162,7 +162,7 @@ export function CanvasScroll() {
 
   return (
     <section
-      id="viaje"
+      id="restauracion"
       ref={triggerRef}
       className="relative h-screen overflow-hidden border-t border-metal-oscuro bg-negro"
     >
@@ -176,8 +176,8 @@ export function CanvasScroll() {
       <div className="relative z-10 flex h-full items-center">
         <div className="mx-auto w-full max-w-7xl px-6">
           <p className="flex items-center gap-3 font-display text-xs uppercase tracking-[0.35em] text-metal">
-            <span className="h-px w-10 bg-rojo" />
-            El Viaje del Metal
+            <span className="h-px w-10 bg-amarillo" />
+            Restauración por etapas
           </p>
 
           <div className="relative mt-6 h-52 sm:h-56">
@@ -191,7 +191,7 @@ export function CanvasScroll() {
                     : "pointer-events-none translate-y-3 opacity-0"
                 }`}
               >
-                <span className="font-display text-7xl font-bold text-rojo sm:text-8xl">
+                <span className="font-display text-7xl font-bold text-amarillo sm:text-8xl">
                   {f.n}
                 </span>
                 <h3 className="mt-2 font-display text-3xl font-bold uppercase leading-tight text-crema sm:text-4xl">
@@ -210,7 +210,7 @@ export function CanvasScroll() {
               <span
                 key={f.n}
                 className={`h-1 flex-1 max-w-16 rounded-full transition-colors duration-300 ${
-                  activeFase >= idx ? "bg-rojo" : "bg-metal-oscuro"
+                  activeFase >= idx ? "bg-amarillo" : "bg-metal-oscuro"
                 }`}
               />
             ))}
@@ -226,7 +226,7 @@ export function CanvasScroll() {
           </p>
           <div className="h-px w-48 overflow-hidden bg-metal-oscuro">
             <div
-              className="h-full bg-rojo transition-[width] duration-200"
+              className="h-full bg-amarillo transition-[width] duration-200"
               style={{ width: `${progress}%` }}
             />
           </div>

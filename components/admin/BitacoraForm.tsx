@@ -70,14 +70,14 @@ export function BitacoraForm({ proyectoId }: { proyectoId: string }) {
         <textarea
           rows={3}
           placeholder="Qué se hizo en esta etapa…"
-          className="w-full border border-metal-oscuro bg-negro px-4 py-3 text-sm text-crema placeholder:text-metal-oscuro focus:border-rojo focus:outline-none"
+          className="w-full border border-metal-oscuro bg-negro px-4 py-3 text-sm text-crema placeholder:text-metal-oscuro focus:border-amarillo focus:outline-none"
           value={descripcion}
           onChange={(e) => setDescripcion(e.target.value)}
         />
       </label>
 
       {error && (
-        <p role="alert" className="border border-rojo/40 bg-rojo/5 p-3 text-sm text-crema">
+        <p role="alert" className="border border-amarillo/40 bg-amarillo/5 p-3 text-sm text-crema">
           {error}
         </p>
       )}
@@ -85,7 +85,7 @@ export function BitacoraForm({ proyectoId }: { proyectoId: string }) {
       <button
         type="submit"
         disabled={guardando || !foto}
-        className="flex w-full items-center justify-center gap-2 border border-metal-oscuro px-6 py-3 font-display text-sm uppercase tracking-widest text-metal transition-colors hover:border-rojo hover:text-crema disabled:opacity-50"
+        className="flex w-full items-center justify-center gap-2 border border-metal-oscuro px-6 py-3 font-display text-sm uppercase tracking-widest text-metal transition-colors hover:border-amarillo hover:text-crema disabled:opacity-50"
       >
         {guardando ? <LoaderCircle className="h-4 w-4 animate-spin" /> : <Camera className="h-4 w-4" />}
         {guardando ? "Publicando…" : "Publicar en bitácora"}

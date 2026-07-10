@@ -27,7 +27,7 @@ export async function Portfolio() {
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div className="max-w-2xl">
             <p className="flex items-center gap-3 font-display text-xs uppercase tracking-[0.35em] text-metal">
-              <span className="h-px w-10 bg-rojo" />
+              <span className="h-px w-10 bg-amarillo" />
               Portfolio
             </p>
             <h2 className="mt-6 font-display text-4xl font-bold uppercase leading-tight sm:text-5xl">
@@ -35,8 +35,8 @@ export async function Portfolio() {
             </h2>
           </div>
           <p className="max-w-sm text-sm leading-relaxed text-metal">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Una
-            selección de metales que volvieron a nacer en el taller.
+            Cada proyecto entra al taller oxidado y sale brillando. Una
+            selección de clásicos que volvieron a nacer en nuestras manos.
           </p>
         </div>
 
@@ -70,7 +70,7 @@ export async function Portfolio() {
                   <span className="absolute right-3 top-3 border border-metal-oscuro bg-negro/80 px-2 py-1 font-display text-[10px] uppercase tracking-widest text-metal transition-opacity group-hover:opacity-0">
                     Después
                   </span>
-                  <span className="absolute right-3 top-3 border border-rojo bg-negro/80 px-2 py-1 font-display text-[10px] uppercase tracking-widest text-rojo opacity-0 transition-opacity group-hover:opacity-100">
+                  <span className="absolute right-3 top-3 border border-amarillo bg-negro/80 px-2 py-1 font-display text-[10px] uppercase tracking-widest text-amarillo opacity-0 transition-opacity group-hover:opacity-100">
                     Antes
                   </span>
                 </div>
@@ -86,7 +86,7 @@ export async function Portfolio() {
                     )}
                   </div>
                   {p.destacado && (
-                    <span className="border border-rojo px-2 py-1 font-display text-[10px] uppercase tracking-widest text-rojo">
+                    <span className="border border-amarillo px-2 py-1 font-display text-[10px] uppercase tracking-widest text-amarillo">
                       Destacado
                     </span>
                   )}
@@ -113,7 +113,7 @@ export async function Portfolio() {
                     <p className="text-xs uppercase tracking-widest text-metal">{p.anio}</p>
                   </div>
                   {p.destacado && (
-                    <span className="border border-rojo px-2 py-1 font-display text-[10px] uppercase tracking-widest text-rojo">
+                    <span className="border border-amarillo px-2 py-1 font-display text-[10px] uppercase tracking-widest text-amarillo">
                       Destacado
                     </span>
                   )}

@@ -34,7 +34,7 @@ export default function LoginPage() {
     <main className="flex min-h-dvh items-center justify-center bg-negro px-6">
       <div className="w-full max-w-sm">
         <div className="mb-8 flex items-center gap-3">
-          <Wrench className="h-6 w-6 text-rojo" strokeWidth={1.5} />
+          <Wrench className="h-6 w-6 text-amarillo" strokeWidth={1.5} />
           <div>
             <p className="font-display text-lg font-bold uppercase tracking-wide text-crema">
               Herencia Garage
@@ -59,7 +59,7 @@ export default function LoginPage() {
               onChange={(e) => setEmail(e.target.value)}
               required
               autoComplete="email"
-              className="w-full border border-metal-oscuro bg-negro px-4 py-3 text-sm text-crema placeholder:text-metal-oscuro focus:border-rojo focus:outline-none"
+              className="w-full border border-metal-oscuro bg-negro px-4 py-3 text-sm text-crema placeholder:text-metal-oscuro focus:border-amarillo focus:outline-none"
             />
           </label>
           <label className="block">
@@ -72,12 +72,12 @@ export default function LoginPage() {
               onChange={(e) => setPassword(e.target.value)}
               required
               autoComplete="current-password"
-              className="w-full border border-metal-oscuro bg-negro px-4 py-3 text-sm text-crema placeholder:text-metal-oscuro focus:border-rojo focus:outline-none"
+              className="w-full border border-metal-oscuro bg-negro px-4 py-3 text-sm text-crema placeholder:text-metal-oscuro focus:border-amarillo focus:outline-none"
             />
           </label>
 
           {error && (
-            <p role="alert" className="border border-rojo/40 bg-rojo/5 p-3 text-sm text-crema">
+            <p role="alert" className="border border-amarillo/40 bg-amarillo/5 p-3 text-sm text-crema">
               {error}
             </p>
           )}
@@ -85,7 +85,7 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={enviando}
-            className="flex w-full items-center justify-center gap-2 border border-rojo bg-rojo px-6 py-4 font-display text-sm uppercase tracking-widest text-crema transition-colors hover:border-rojo-claro hover:bg-rojo-claro disabled:opacity-50"
+            className="flex w-full items-center justify-center gap-2 border border-amarillo bg-amarillo px-6 py-4 font-display text-sm uppercase tracking-widest text-negro transition-colors hover:border-amarillo-claro hover:bg-amarillo-claro disabled:opacity-50"
           >
             {enviando && <LoaderCircle className="h-4 w-4 animate-spin" />}
             {enviando ? "Ingresando…" : "Ingresar"}

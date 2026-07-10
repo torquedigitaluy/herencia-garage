@@ -1,5 +1,5 @@
 const estilos: Record<string, string> = {
-  nuevo: "border-rojo text-rojo",
+  nuevo: "border-amarillo text-amarillo",
   contactado: "border-azul text-crema",
   cotizado: "border-metal text-crema",
   descartado: "border-metal-oscuro text-metal-oscuro",

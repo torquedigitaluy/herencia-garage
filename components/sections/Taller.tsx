@@ -17,7 +17,7 @@ export function Taller() {
 
         <div>
           <p className="flex items-center gap-3 font-display text-xs uppercase tracking-[0.35em] text-metal">
-            <span className="h-px w-10 bg-rojo" />
+            <span className="h-px w-10 bg-amarillo" />
             El Taller
           </p>
           <h2 className="mt-6 font-display text-4xl font-bold uppercase leading-tight sm:text-5xl">
@@ -26,13 +26,15 @@ export function Taller() {
             paciencia de coleccionista
           </h2>
           <p className="mt-6 leading-relaxed text-metal">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation.
+            Herencia Garage nació de una obsesión: que ningún clásico termine
+            sus días bajo una lona. Somos un taller boutique dedicado
+            exclusivamente a la chapa y pintura, donde cada carrocería se
+            trabaja a mano, sin apuro y con respeto por su historia.
           </p>
           <p className="mt-4 leading-relaxed text-metal">
-            Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur excepteur sint occaecat.
+            Tomamos pocos autos a la vez para que cada proyecto reciba las
+            horas que merece. Documentamos todo el proceso con fotos y el dueño
+            puede seguirlo en vivo desde nuestro portal de clientes.
           </p>
 
           <dl className="mt-10 grid grid-cols-3 gap-6 border-t border-metal-oscuro pt-8">

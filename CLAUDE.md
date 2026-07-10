@@ -84,7 +84,7 @@ Definir estos tokens en la config de Tailwind para mantener la estética "premiu
 
 -   **Negro Mate/Estudio** `#0f0f0f` — Fondo principal de la web y de la animación 3D. Aporta elegancia y resalta el metal/pintura de los autos.
 -   **Metal Desnudo (Gris Industrial)** `#8e9196` — Para bordes, divisores y tipografía secundaria.
--   **Rojo Automotriz (Acento Clásico)** `#9b111e` (Candy Apple Red) o un **Azul Vintage** `#1c39bb` — Colores para botones de CTA, enlaces activos o detalles sutiles.
+-   **Amarillo Automotriz (Acento Clásico)** `#f5b50a` (Grabber Yellow, token `amarillo` + `amarillo-claro` para hover) o un **Azul Vintage** `#1c39bb` — Colores para botones de CTA, enlaces activos o detalles sutiles. Sobre fondo amarillo sólido el texto va en `text-negro` (contraste).
 -   **Off-white/Crema** `#f4f1ea` — Para el texto principal sobre los fondos oscuros.
 -   **Tipografía**:
     -   Títulos: Una fuente Sans-Serif bold y mecánica, estilo *Oswald* o *Teko*.
