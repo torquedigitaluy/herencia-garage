@@ -12,6 +12,13 @@ const proyectosPlaceholder = [
   { titulo: "Fiat 600", anio: "1960" },
 ];
 
+// La card define su tamaño (aspect + spans); el media interior llena la celda
+// completa para que el overlay del título quede siempre pegado al borde inferior.
+// Todas las cards son 4/3: el destacado ocupa 2×2 celdas y así queda alineado
+// con las filas de la grilla (con 4/5 las filas crecían y dejaban huecos).
+const cardClass = (destacado: boolean) =>
+  destacado ? "sm:col-span-2 lg:row-span-2 aspect-[4/3]" : "aspect-[4/3]";
+
 export async function Portfolio() {
   const supabase = createPublicClient();
   const { data } = await supabase
@@ -49,48 +56,41 @@ export async function Portfolio() {
               <Link
                 key={p.id}
                 href={`/portfolio/${p.slug}`}
-                className={`group relative block overflow-hidden ${
-                  p.destacado ? "sm:col-span-2 lg:row-span-2" : ""
-                }`}
+                className={`group relative block overflow-hidden ${cardClass(p.destacado)}`}
               >
-                <div
-                  className={`relative ${p.destacado ? "aspect-[4/3] lg:aspect-[4/5]" : "aspect-[4/3]"}`}
-                >
-                  {p.foto_despues_url ? (
-                    <>
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={publicUrl(p.foto_despues_url)}
-                        alt={`${p.titulo} — después`}
-                        loading="lazy"
-                        className="absolute inset-0 h-full w-full object-cover"
-                      />
-                      {/* La foto de "antes" aparece al pasar el mouse */}
-                      {p.foto_antes_url && (
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img
-                          src={publicUrl(p.foto_antes_url)}
-                          alt={`${p.titulo} — antes`}
-                          loading="lazy"
-                          className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                        />
-                      )}
-                      <span className="absolute right-3 top-3 border border-metal-oscuro bg-negro/80 px-2 py-1 font-display text-[10px] uppercase tracking-widest text-metal transition-opacity group-hover:opacity-0">
-                        Después
-                      </span>
-                      {p.foto_antes_url && (
-                        <span className="absolute right-3 top-3 border border-amarillo bg-negro/80 px-2 py-1 font-display text-[10px] uppercase tracking-widest text-amarillo opacity-0 transition-opacity group-hover:opacity-100">
-                          Antes
-                        </span>
-                      )}
-                    </>
-                  ) : (
-                    <Placeholder
-                      label={`${p.titulo} · Después`}
-                      ratio="absolute inset-0"
+                {p.foto_despues_url ? (
+                  <>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={publicUrl(p.foto_despues_url)}
+                      alt={`${p.titulo} — después`}
+                      loading="lazy"
+                      className="absolute inset-0 h-full w-full object-cover"
                     />
-                  )}
-                </div>
+                    {/* La foto de "antes" aparece al pasar el mouse */}
+                    {p.foto_antes_url && (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={publicUrl(p.foto_antes_url)}
+                        alt={`${p.titulo} — antes`}
+                        loading="lazy"
+                        className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                      />
+                    )}
+                    <span className="absolute right-3 top-3 border border-metal-oscuro bg-negro/80 px-2 py-1 font-display text-[10px] uppercase tracking-widest text-metal transition-opacity group-hover:opacity-0">
+                      Después
+                    </span>
+                    {p.foto_antes_url && (
+                      <span className="absolute right-3 top-3 border border-amarillo bg-negro/80 px-2 py-1 font-display text-[10px] uppercase tracking-widest text-amarillo opacity-0 transition-opacity group-hover:opacity-100">
+                        Antes
+                      </span>
+                    )}
+                  </>
+                ) : (
+                  <div className="absolute inset-0">
+                    <Placeholder label={`${p.titulo} · Después`} ratio="h-full" />
+                  </div>
+                )}
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-between bg-gradient-to-t from-negro/90 to-transparent p-5">
                   <div>
                     <h3 className="font-display text-lg font-semibold uppercase tracking-wide text-crema">
@@ -117,12 +117,11 @@ export async function Portfolio() {
             {proyectosPlaceholder.map((p) => (
               <article
                 key={p.titulo}
-                className={`group relative ${p.destacado ? "sm:col-span-2 lg:row-span-2" : ""}`}
+                className={`group relative ${cardClass(Boolean(p.destacado))}`}
               >
-                <Placeholder
-                  label={`${p.titulo} · Después`}
-                  ratio={p.destacado ? "aspect-[4/3] lg:aspect-[4/5]" : "aspect-[4/3]"}
-                />
+                <div className="absolute inset-0">
+                  <Placeholder label={`${p.titulo} · Después`} ratio="h-full" />
+                </div>
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-between bg-gradient-to-t from-negro/90 to-transparent p-5">
                   <div>
                     <h3 className="font-display text-lg font-semibold uppercase tracking-wide text-crema">
