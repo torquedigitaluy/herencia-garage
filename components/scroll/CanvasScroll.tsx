@@ -154,6 +154,18 @@ export function CanvasScroll() {
       });
     }, triggerRef);
 
+    // Si se llegó con un anchor (ej. /#portfolio desde una página interna),
+    // el pin recién creado corre las secciones de abajo y además cancela el
+    // scroll suave del navegador: re-scrolleamos al destino ya con el pin armado.
+    if (window.location.hash) {
+      const destino = document.querySelector(window.location.hash);
+      if (destino) {
+        requestAnimationFrame(() =>
+          destino.scrollIntoView({ behavior: "instant" })
+        );
+      }
+    }
+
     return () => {
       ro.disconnect();
       ctxGsap.revert(); // destruye el ScrollTrigger y el pin — evita memory leaks

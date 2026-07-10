@@ -36,13 +36,13 @@ export function Hero() {
 
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <Link
-              href="#contacto"
+              href="/#contacto"
               className="border border-amarillo bg-amarillo px-8 py-4 font-display text-sm uppercase tracking-widest text-negro transition-colors hover:bg-amarillo-claro hover:border-amarillo-claro"
             >
               Solicitar cotización
             </Link>
             <Link
-              href="#portfolio"
+              href="/#portfolio"
               className="border border-metal-oscuro px-8 py-4 font-display text-sm uppercase tracking-widest text-crema transition-colors hover:border-crema"
             >
               Ver restauraciones
